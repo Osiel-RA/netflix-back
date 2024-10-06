@@ -90,7 +90,7 @@ CREATE TABLE "user" (
 
 CREATE TABLE session (
     id VARCHAR(255) PRIMARY KEY,
-    user_id INT NULL,
+    user_id BIGINT NOT NULL NULL,
     ip_address VARCHAR(45) NULL,
     user_agent TEXT NULL,
     payload TEXT NOT NULL,
@@ -115,10 +115,10 @@ CREATE TABLE personal_access_token (
 CREATE TABLE profile (
     id SERIAL PRIMARY KEY,
     name VARCHAR(50),
-    language_id INT,
-    user_id INT,
-    classification_id INT,
-    status_id INT,
+    language_id BIGINT NOT NULL,
+    user_id BIGINT NOT NULL,
+    classification_id BIGINT NOT NULL,
+    status_id BIGINT NOT NULL,
     created_at DATE DEFAULT CURRENT_DATE,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_language FOREIGN KEY (language_id) REFERENCES language(id),
@@ -131,8 +131,8 @@ CREATE TABLE video (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
     description VARCHAR(255),
-    category_id INT,
-    classification_id INT,
+    category_id BIGINT NOT NULL,
+    classification_id BIGINT NOT NULL,
     url_video VARCHAR(255),
     key_video VARCHAR(255),
     created_at DATE DEFAULT CURRENT_DATE,
@@ -143,8 +143,8 @@ CREATE TABLE video (
 
 CREATE TABLE profile_like (
     id SERIAL PRIMARY KEY,
-    profile_id INT,
-    video_id INT,
+    profile_id BIGINT NOT NULL,
+    video_id BIGINT NOT NULL,
     add_my_list BOOLEAN DEFAULT FALSE,
     created_at DATE DEFAULT CURRENT_DATE,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -154,8 +154,8 @@ CREATE TABLE profile_like (
 
 CREATE TABLE author_video (
     id SERIAL PRIMARY KEY,
-    author_id INT,
-    video_id INT,
+    author_id BIGINT NOT NULL,
+    video_id BIGINT NOT NULL,
     created_at DATE DEFAULT CURRENT_DATE,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_author FOREIGN KEY (author_id) REFERENCES author(id),
@@ -164,8 +164,8 @@ CREATE TABLE author_video (
 
 CREATE TABLE keep_watching (
     id SERIAL PRIMARY KEY,
-    video_id INT,
-    profile_id INT,
+    video_id BIGINT NOT NULL,
+    profile_id BIGINT NOT NULL,
     minute INT,
     created_at DATE DEFAULT CURRENT_DATE,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -175,9 +175,9 @@ CREATE TABLE keep_watching (
 
 CREATE TABLE payment (
     id SERIAL PRIMARY KEY,
-    user_id INT,
-    pay_method_id INT,
-    plan_type_id INT,
+    user_id BIGINT NOT NULL,
+    pay_method_id BIGINT NOT NULL,
+    plan_type_id BIGINT NOT NULL,
     created_at DATE DEFAULT CURRENT_DATE,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES "user"(id),
@@ -187,8 +187,8 @@ CREATE TABLE payment (
 
 CREATE TABLE user_card (
     id SERIAL PRIMARY KEY,
-    user_id INT,
-    card_id INT,
+    user_id BIGINT NOT NULL,
+    card_id BIGINT NOT NULL,
     name VARCHAR(255),
     account_number CHAR(16),
     cvv CHAR(3),
