@@ -1,0 +1,128 @@
+
+.login-form {
+   background-color: rgba(0, 0, 0, 0.8);
+   padding: 50px;
+   max-width: 450px;
+   margin: auto;
+}
+
+.form-control {
+   border: 1px solid #CFCFCF;
+   background-color: rgba(74, 74, 74, 0.3);
+   color: white;
+   font-size: 16px;
+   padding: 20px 15px 10px 10px;
+   height: auto;
+}
+
+.form-control::placeholder {
+   color: white;
+   font-size: 10px;
+   opacity: 1;
+}
+
+.form-control:focus {
+   color: white;
+   border-color: #CFCFCF;
+   background-color: rgba(74, 74, 74, 0.3);
+   outline: 2px solid white; 
+   outline-offset: 2px; 
+}
+
+.form-group {
+   position: relative;
+   margin-bottom: 20px;
+}
+
+.form-group label {
+   position: absolute;
+   left: 10px;
+   top: 50%;
+   transform: translateY(-50%);
+   transition: 0.2s ease all;
+   opacity: 0.6;
+}
+
+.form-control:focus + label,
+.form-control:not(:placeholder-shown) + label {
+   top: 13px;
+   font-size: 75%;
+   opacity: 1;
+   color: white;
+}
+
+.login-title {
+   text-align: left;
+   margin-top: 2px;
+   margin-bottom: 30px;
+   font-weight: 700;
+}
+
+.btn {
+   margin-top: 15px;
+   font-weight: 500;
+   background-color: #E50914;
+   padding-bottom: 7px;
+   padding-top: 7px;
+   border: none;
+}
+
+.link-transparent {
+   background-color: transparent;
+   border-color: transparent;
+   color: white;
+   text-decoration: none;
+   text-align: center;
+}
+
+.link-transparent:hover {
+   text-decoration: underline;
+   color: white;
+}
+
+.registration-info {
+   margin-top: 20px;
+}
+
+.registration-info .form-check-input {
+   width: 18px;
+   height: 18px;
+   margin-right: 0px; 
+   margin-left: -10px; 
+   border: 1px solid lightgray; 
+   background-color: black; 
+   appearance: none; 
+   cursor: pointer; 
+   border-radius: 3px; 
+   vertical-align: middle; 
+   transform: translateY(-3px); 
+   position: relative; 
+}
+
+.registration-info .form-check-input:hover {
+   border-color: white; 
+}
+
+.registration-info .form-check-input:checked {
+   background-color: white; 
+   border-color: white; 
+}
+
+.registration-info .form-check-input:checked:after {
+   content: '✓'; 
+   color: black; 
+   position: absolute; 
+   left: 2px; 
+   top: -5px; 
+   font-size: 18px; 
+}
+
+.registration-info label {
+   padding-left: 10px; 
+   display: flex;
+   align-items: flex-end; 
+}
+
+.registration-info p {
+   color: #CFCFCF;
+}
