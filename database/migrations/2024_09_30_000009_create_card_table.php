@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('card', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 255);
+            $table->string('description', 255);
+            $table->string('name_bank', 255);
             $table->timestamps();
         });
     }

@@ -1,0 +1,57 @@
+.navbar-login {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+    transition: background-color 0.3s ease;
+    height: 80px;
+ }
+
+ .navbar-home {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Colocar el navbar por encima del contenido */
+    transition: background-color 0.3s ease;
+    height: 70px;
+    padding: 0 50px;
+}
+.navbar-nav .nav-item {
+    margin-right: 5px; /* Ajusta este valor para modificar el espacio entre elementos */
+}
+.navbar-nav .nav-item:first-child {
+    margin-left: 15px; /* Espacio adicional entre el logo y el primer elemento */
+}
+
+.navbar.scrolled {
+    background-color: #141414; /* Color sólido al hacer scroll */
+}
+
+.navbar .logo {
+    height: 30px;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+.dropdown-menu {
+    background: rgba(0, 0, 0, 0.9);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    right: auto;
+    transform: translateX(-60%);
+}
+
+.dropdown-item {
+    color: white;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}

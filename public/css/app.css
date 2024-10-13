@@ -1,0 +1,16 @@
+/* Importar la fuente Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Estilos generales "body" */
+.login-body {
+    background-image: url('../images/login-background.jpg');
+    background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center; /* Centra la imagen en el fondo */
+    background-attachment: scroll; /* Asegura que la imagen se desplace al hacer scroll */
+ }
+ .home-body {
+    margin: 0;
+    background-color: #141414;
+    color: white;
+}

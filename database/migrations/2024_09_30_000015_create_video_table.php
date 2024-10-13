@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB; // Asegúrate de importar DB
 
 return new class extends Migration
 {
@@ -12,17 +13,21 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('video', function (Blueprint $table) {
-            $table->id();
-            $table->string('title', 255);
-            $table->string('description', 255);
-            $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('classification_id');
-            $table->string('url_video', 255)->nullable();
-            $table->string('key_video', 255)->nullable();
-            $table->timestamps();
+            $table->increments('id');
+            $table->string('title')->nullable();
+            $table->string('description')->nullable();
+            $table->bigInteger('category_id');
+            $table->bigInteger('classification_id');
+            $table->string('url_video')->nullable();
+            $table->string('key_video')->nullable();
+            $table->date('created_at')->nullable()->default(DB::raw('CURRENT_DATE')); // Usa DB::raw
+            $table->timestamp('updated_at')->nullable()->useCurrent();
+        });
 
-            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade')->onUpdate('cascade')->name('fk_category');
-            $table->foreign('classification_id')->references('id')->on('classification')->onDelete('cascade')->onUpdate('cascade')->name('fk_classification');
+        // Agregar claves foráneas
+        Schema::table('video', function (Blueprint $table) {
+            $table->foreign(['category_id'], 'fk_category')->references(['id'])->on('category')->onUpdate('no action')->onDelete('no action');
+            $table->foreign(['classification_id'], 'fk_classification')->references(['id'])->on('classification')->onUpdate('no action')->onDelete('no action');
         });
     }
 
@@ -31,6 +36,11 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('video', function (Blueprint $table) {
+            $table->dropForeign('fk_category');
+            $table->dropForeign('fk_classification');
+        });
+
         Schema::dropIfExists('video');
     }
 };

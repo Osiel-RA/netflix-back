@@ -12,15 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('payment', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('pay_method_id');
-            $table->unsignedBigInteger('plan_type_id');
-            $table->timestamps();
+            $table->increments('id');
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('pay_method_id')->unsigned();
+            $table->bigInteger('plan_type_id')->unsigned();
+            $table->date('created_at')->nullable()->default(DB::raw('CURRENT_DATE')); // Usar DB::raw para evitar error
+            $table->timestamp('updated_at')->nullable()->useCurrent();
+        });
 
-            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade')->onUpdate('cascade')->name('fk_user');
-            $table->foreign('pay_method_id')->references('id')->on('pay_method')->onDelete('cascade')->onUpdate('cascade')->name('fk_pay_method');
-            $table->foreign('plan_type_id')->references('id')->on('plan_type')->onDelete('cascade')->onUpdate('cascade')->name('fk_plan_type');
+        Schema::table('payment', function (Blueprint $table) {
+            $table->foreign(['pay_method_id'], 'fk_pay_method')->references(['id'])->on('pay_method')->onUpdate('no action')->onDelete('no action');
+            $table->foreign(['plan_type_id'], 'fk_plan_type')->references(['id'])->on('plan_type')->onUpdate('no action')->onDelete('no action');
+            $table->foreign(['user_id'], 'fk_user')->references(['id'])->on('user')->onUpdate('no action')->onDelete('no action');
         });
     }
 
@@ -29,6 +32,12 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('payment', function (Blueprint $table) {
+            $table->dropForeign('fk_pay_method');
+            $table->dropForeign('fk_plan_type');
+            $table->dropForeign('fk_user');
+        });
+
         Schema::dropIfExists('payment');
     }
 };

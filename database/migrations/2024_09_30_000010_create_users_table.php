@@ -22,7 +22,10 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->foreign('status_id')->references('id')->on('status')->onDelete('cascade')->onUpdate('cascade')->name('fk_status');
+            $table->foreign('status_id', 'fk_status')
+                  ->references('id')->on('status')
+                  ->onUpdate('no action')
+                  ->onDelete('no action');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
@@ -33,18 +36,16 @@ return new class extends Migration
 
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
-            $table->unsignedBigInteger('user_id')->nullable()->index();
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
             $table->longText('payload');
             $table->integer('last_activity')->index();
+            $table->unsignedBigInteger('user_id')->nullable()->index();
 
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('user')
-                ->onDelete('cascade')
-                ->onUpdate('cascade')
-                ->name('fk_user');
+            $table->foreign('user_id', 'fk_status')
+                  ->references('id')->on('user')
+                  ->onUpdate('no action')
+                  ->onDelete('no action');
         });
     }
 
@@ -53,7 +54,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('user');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }

@@ -12,14 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('keep_watching', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('video_id');
-            $table->unsignedBigInteger('profile_id');
+            $table->increments('id');
+            $table->bigInteger('video_id')->unsigned();
+            $table->bigInteger('profile_id')->unsigned();
             $table->integer('minute')->nullable();
-            $table->timestamps();
+            $table->date('created_at')->nullable()->default(DB::raw('CURRENT_DATE')); // Usar DB::raw para evitar error
+            $table->timestamp('updated_at')->nullable()->useCurrent();
+        });
 
-            $table->foreign('video_id')->references('id')->on('video')->onDelete('cascade')->onUpdate('cascade')->name('fk_video');
-            $table->foreign('profile_id')->references('id')->on('profile')->onDelete('cascade')->onUpdate('cascade')->name('fk_profile');
+        Schema::table('keep_watching', function (Blueprint $table) {
+            $table->foreign(['profile_id'], 'fk_profile')->references(['id'])->on('profile')->onUpdate('no action')->onDelete('no action');
+            $table->foreign(['video_id'], 'fk_video')->references(['id'])->on('video')->onUpdate('no action')->onDelete('no action');
         });
     }
 
@@ -28,6 +31,11 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('keep_watching', function (Blueprint $table) {
+            $table->dropForeign('fk_profile');
+            $table->dropForeign('fk_video');
+        });
+
         Schema::dropIfExists('keep_watching');
     }
 };

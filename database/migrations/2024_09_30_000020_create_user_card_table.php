@@ -12,17 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_card', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('card_id');
-            $table->string('name', 255);
-            $table->char('account_number', 16);
-            $table->char('cvv', 3);
+            $table->increments('id');
+            $table->bigInteger('user_id');
+            $table->bigInteger('card_id');
+            $table->string('name')->nullable();
+            $table->char('account_number', 16)->nullable();
+            $table->char('cvv', 3)->nullable();
             $table->date('expiration_date')->nullable();
-            $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('user')->onDelete('cascade')->onUpdate('cascade')->name('fk_user');
-            $table->foreign('card_id')->references('id')->on('card')->onDelete('cascade')->onUpdate('cascade')->name('fk_card');
+            $table->date('created_at')->nullable()->default(DB::raw('CURRENT_DATE')); // Corrección aquí
+            $table->timestamp('updated_at')->nullable()->useCurrent();
+            
+            // Definición de claves foráneas
+            $table->foreign('user_id')->references('id')->on('user')->onUpdate('no action')->onDelete('no action');
+            $table->foreign('card_id')->references('id')->on('card')->onUpdate('no action')->onDelete('no action');
         });
     }
 
