@@ -39,7 +39,7 @@ Contenido: Contiene el formulario de inicio de sesión, mensajes de error (si lo
                     <input type="checkbox" name="remember" class="form-check-input">
                     <span style="margin-left: 10px; color: #CFCFCF;">Recuérdame</span>
                 </label>
-                <p>¿Primera vez en Netflix? <a href=""  class="text-white font-weight-bold">Suscríbete ahora.</a></p>
+                <p>¿Primera vez en Netflix? <a href="{{ route('start-register') }}"  class="text-white font-weight-bold">Suscríbete ahora.</a></p>
             </div>  
         </form>
     </div>

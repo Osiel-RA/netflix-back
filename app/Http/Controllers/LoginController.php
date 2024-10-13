@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Profile;
 
 class LoginController extends Controller
 {
@@ -18,7 +19,10 @@ class LoginController extends Controller
     public function selectProfile()
     {
         if (Auth::check()) {
-            return view('profile/select-profile');
+            $user = auth()->user();
+            $profiles = Profile::where('user_id', $user->id)->get(); // Obtiene los perfiles actualizados
+    
+            return view('profiles.select-profile', compact('profiles')); // Pasa los perfiles a la vista
         }
         return redirect()->route('login');
     }
@@ -46,7 +50,8 @@ class LoginController extends Controller
             ]);
         }
         
-        if ($credentials['password'] !== $user->password) {
+        // Verificar si la contraseña ingresada coincide con la contraseña cifrada en la base de datos
+        if (!Hash::check($credentials['password'], $user->password)) {
             return back()->withErrors([
                 'password' => 'La contraseña ingresada es incorrecta.',
             ]);

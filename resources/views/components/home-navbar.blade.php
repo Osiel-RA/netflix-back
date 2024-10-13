@@ -27,7 +27,7 @@ Contenido: Contiene enlaces de navegación a diferentes secciones de la aplicaci
                     Perfil
                 </a>
                 <div class="dropdown-menu" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item" href="#">Administrar perfil</a>
+                    <a class="dropdown-item" href="{{ route('select-profile') }}">Administrar perfil</a>
                     <a class="dropdown-item" href="#">Cuenta</a>
                     <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                         @csrf <!-- Asegúrate de incluir el token CSRF -->
