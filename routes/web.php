@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\PaymentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,7 +22,15 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
     Route::get('/select-profile', [LoginController::class, 'selectProfile'])->name('select-profile');
     Route::get('/home', [LoginController::class, 'showNetflix'])->name('home');
+
+     // Agregar rutas para el pago por código de tarjeta de regalo
+     Route::get('/code-pay', [PaymentController::class, 'showCodePayForm'])->name('code-pay.form');
+     Route::get('/code-pay', [PaymentController::class, 'showCodePay'])->name('code-pay');
+     Route::post('/redeem-code', [PaymentController::class, 'redeemCode'])->name('redeem.code');
+     
 });
+
+
 
 /*
 Route::get('/edit-profile', function () {
