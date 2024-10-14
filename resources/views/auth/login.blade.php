@@ -32,7 +32,7 @@ Contenido: Contiene el formulario de inicio de sesión, mensajes de error (si lo
                 <label for="password" class="text-white">Contraseña</label>
             </div>
             <button type="submit" class="btn btn-danger btn-block">Iniciar sesión</button>
-            <a href="" class="link-transparent text-center d-block mt-3">¿Olvidaste la contraseña?</a>
+            <a href="{{ route('forget-password') }}" class="link-transparent text-center d-block mt-3">¿Olvidaste la contraseña?</a>
              
             <div class="registration-info mt-3">
                 <label class="d-flex align-items-end">

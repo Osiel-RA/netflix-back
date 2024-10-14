@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ForgetPasswordController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 
@@ -51,6 +52,12 @@ Route::get('/start-register', function () {
     return view('auth.start-register');
 })->name('start-register');
 
+//roberto:
+//Rutas Reset Password:
+Route::get('/email-forgotpassword', [ForgetPasswordController::class, 'forgetPassword'])->name('forget-password');
+Route::post('/email-forgotpassword', [ForgetPasswordController::class, 'forgetPasswordPost'])->name('forget-password-post');
+Route::get('/reset-password/{token}', [ForgetPasswordController::class, 'resetPassword'])->name('reset-password');
+Route::post('/reset-password', [ForgetPasswordController::class, 'resetPasswordPost'])->name('reset-password-post');
 
 //ocegueda
 //rutas perfiles
