@@ -19,7 +19,7 @@ Contenido: unicamente muestra el correo a donde se mando el enlace de verificaci
             <h6>Al verificar tu email, podrás mejorar la seguridad de la cuenta y recibir comunicaciones importantes de Netflix.</h6>
         </div>
 
-        <a href="#" class="btn btn-disabled btn-block btn-next1">Omitir</a> <!--route plan.start-plan-->
+        <a href="{{ route ('membership.start-plan')}}" class="btn btn-disabled btn-block btn-next1">Omitir</a> <!--route plan.start-plan-->
     </div>
 @endsection
 

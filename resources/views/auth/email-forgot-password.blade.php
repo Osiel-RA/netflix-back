@@ -14,17 +14,35 @@
             nefli pirata
         </a>
     </nav>
-
+   
     <div class="container">
+        
         <div class="login-form">
-            <h2 class="login-title text-white">Verificar Correo</h2>
+            
+            <h3 class="login-title text-white">¿Olvidaste tu contraseña?</h3>
+            <p class="login-title text-white">Solicita el cambio de contraseña a tu correo</p>
             <form method="POST" action="{{ route('forget-password-post') }}">
                 @csrf
                 <div class="form-group">
                 <label for="user_identifier" class="text-white">Email</label>
                     <input type="email" name="email" id="email" class="form-control" required >
                 </div>
-                <button type="submit" class="btn btn-danger btn-block">Enviar Correo de Verificación</button>
+                @if(session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }} <a href="{{ route('start-register') }}"  class=" font-weight-bold" >Registrate.</p> </li>
+                                
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <button type="submit" class="btn btn-danger btn-block">Enviar solucitud</button>
             </form>
         </div>
     </div>

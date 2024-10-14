@@ -83,7 +83,7 @@
             <h1>Cambio de Contraseña Solicitado</h1>
             <p>Hola,</p>
             <p>Recibimos una solicitud para cambiar tu contraseña. Si no realizaste esta solicitud, puedes ignorar este mensaje. De lo contrario, haz clic en el botón a continuación para proceder con el cambio de tu contraseña.</p>
-            <a href="{{ route('reset-password', $token) }}" class="button">Cambiar Contraseña</a>
+            <a href="{{ route('reset-password', ['token' => $token, 'email' => $email]) }}" class="button">Cambiar Contraseña</a>
         </div>
 
         <!-- Pie de página -->

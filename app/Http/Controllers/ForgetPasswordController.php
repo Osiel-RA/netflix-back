@@ -19,7 +19,13 @@ class ForgetPasswordController extends Controller {
         $request->validate([
             'email'=> 'required|email'
         ]);
+        // Buscar el usuario por el correo electrónico
+        $user = User::where('username', $request->email)->first();
 
+        // Si el usuario no existe, devolver un error
+        if (!$user) {
+            return redirect()->back()->withErrors(['email' => 'Este correo no esta registrado, podrias hacerlo ;D']);
+        }
         $token= Str::random(64);
 
         DB::table('password_reset_token')->insert([
@@ -28,16 +34,23 @@ class ForgetPasswordController extends Controller {
             'created_at'=> Carbon::now()
         ]);
 
-        Mail::send('auth/emails/forget-password', ['token'=> $token], function($message) use ($request) {
-            $message->to($request->email);
-            $message->subject('Reset Password');
-        });
-
-        return redirect()->to(route('forget-password'));
+        // Intentar enviar el correo, y capturar cualquier error
+        try {
+            Mail::send('auth/emails/forget-password', ['token' => $token, 'email' => $request->email], function($message) use ($request) {
+                $message->to($request->email);
+                $message->subject('Reset Password');
+            }); // Si se envió correctamente, redirigir con un mensaje de éxito  
+            return redirect()->route('forget-password')->with('status', '¡Hemos enviado la solicitud a tu correo!');
+        
+        } catch (\Exception $e) {   
+            DB::table('password_reset_token')->where('username', $request->email)->delete();// Si ocurre un error, eliminar el token y mostrar un mensaje de error
+            return redirect()->back()->withErrors(['email' => 'Hubo un problema enviando el correo. Por favor, inténtalo de nuevo.']);
+        }
     }
 
-    public function resetPassword($token) {
-        return view('auth.forgot-password', compact('token'));
+    public function resetPassword($token, Request $request) {
+        $email = $request->query('email');
+        return view('auth.forgot-password', compact('token', 'email'));
     }
 
     public function resetPasswordPost(Request $request) {
@@ -60,6 +73,7 @@ class ForgetPasswordController extends Controller {
 
         DB::table('password_reset_token')->where(['username'=> $request->email])->delete();
 
-        return redirect()->to(route('login-user'));
+        return redirect()->route('login-user')->with('status', '¡Contraseña cambiada con éxito! Por favor, ingresa con tu nueva contraseña.');
+
     }
 }

@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar Contraseña</title>
+    <title>Selecciona tu plan - Netflix</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('css/forgot-password-styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/plan-styles.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -15,27 +16,32 @@
         </a>
     </nav>
 
-    <div class="container">
-        <div class="login-form">
-            <h2 class="login-title text-white">Actualizar la contraseña</h2>
-            
-            <form method="POST" action="{{ route('reset-password-post') }}">
-                @csrf
-                <input type="text" name="token" hidden value="{{ $token }}">
-                <div class="form-group">
-                    <label for="email" class="text-white">Correo electrónico</label>
-                    <input type="email" name="email" id="email" class="form-control" value="{{ $email }}" disable>
-                
-                    <label for="password1" class="text-white">Nueva contraseña</label>
-                    <input type="password" name="password" id="password" class="form-control" required >
-                
-                    <label for="password2" class="text-white">Confirmar contraseña</label>
-                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required >
-                </div>
-                <button type="submit" class="btn btn-danger btn-block">Cambiar contraseña</button>
-               
-            </form>
+    <div class="main-container">
+        <!-- Image above the step info -->
+        <div class="device-icons">
+            <img src="{{ asset('images/plan-palomitarojaciruclo.png') }}" alt="dispositivos" width="250">
         </div>
+        
+        <div class="step-info">
+            <h7>PASO 3 DE 4</h7>
+            <h2>Selecciona tu plan</h2>
+            <ul class="checklist">
+                <li>
+                    <img src="{{ asset('images/plan-palomitaroja.png') }}" alt="check" class="check-icon">
+                    Sin compromisos, cancela cuando quieras.
+                </li>
+                <li>
+                    <img src="{{ asset('images/plan-palomitaroja.png') }}" alt="check" class="check-icon">
+                    Entretenimiento sin fin a un bajo costo.
+                </li>
+                <li>
+                    <img src="{{ asset('images/plan-palomitaroja.png') }}" alt="check" class="check-icon">
+                    Disfruta de Netflix en todos tus dispositivos.
+                </li>
+            </ul>
+        </div>
+        <a href="{{ route('membership.select-plan') }}" class="btn btn-danger btn-block btn-next">Siguiente</a>
+        
     </div>
 
     <div class="footer">
@@ -68,7 +74,7 @@
             </div>
         </div>
     </div>
-    
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

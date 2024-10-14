@@ -6,16 +6,18 @@ use Illuminate\Http\Request;
 use App\Models\PlanType;
 use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Profile;
+
 
 class PaymentController extends Controller
 {
-    
+
     public function showCodePay()
     {
-        // Obtener el plan Estándar
+        // Toma el plan Estándar con Anuncios, por ahora
         $plan_standard = PlanType::where('name', 'Estándar con Anuncios')->first();
 
-        return view('code-pay', compact('plan_standard'));
+        return view('membership.code-pay', compact('plan_standard'));
     }
 
     public function redeemCode(Request $request)
@@ -39,7 +41,8 @@ class PaymentController extends Controller
             'plan_type_id' => $request->plan_type_id,
         ]);
 
-        return redirect()->route('login')->with('success', 'Pago realizado exitosamente');
+        $plan_standard = PlanType::where('name', 'Estándar con Anuncios')->first();
+        return view('membership.confirmation-pay', compact('plan_standard'));
     }
 
 }

@@ -9,7 +9,11 @@ Contenido: Contiene el formulario de inicio de sesión, mensajes de error (si lo
 @section('content')
     <div class="login-form">
         <h2 class="login-title text-white">Iniciar Sesión</h2>
-        
+        @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+        @endif
         <!-- Sección de errores -->
         @if ($errors->any())
             <div class="alert alert-danger">
