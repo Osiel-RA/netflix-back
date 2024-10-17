@@ -11,7 +11,7 @@ class StatusSeeder extends Seeder {
      * Run the database seeds.
      */
     public function run(): void {
-        DB::table('status')->insert(
+        DB::table('status')->insert([
             [
                 'name'=> 'Activo',
                 'description'=> 'El usuario se encuentra en la aplicación.'
@@ -20,6 +20,6 @@ class StatusSeeder extends Seeder {
                 'name'=> 'Inactivo',
                 'description'=> 'El usuario no se encuentra en la aplicación.'
             ]
-        );
+        ]);
     }
 }

@@ -13,7 +13,7 @@ class PlanTypeSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('plan_type')->insert(
+        DB::table('plan_type')->insert([
             [
                 'name'=> 'Estándar con Anuncios',
                 'description'=> 'Calidad de audio y video: Buena.
@@ -38,6 +38,6 @@ class PlanTypeSeeder extends Seeder {
                 'import'=> 299.00,
                 'devices'=> 4
             ]
-        );
+        ]);
     }
 }

@@ -13,7 +13,7 @@ class TypeReactionSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('type_reaction')->insert(
+        DB::table('type_reaction')->insert([
             [
                 'name'=> 'No Me Gusta'
             ],
@@ -23,6 +23,6 @@ class TypeReactionSeeder extends Seeder {
             [
                 'name'=> 'Me Encanta'
             ]
-        );
+        ]);
     }
 }

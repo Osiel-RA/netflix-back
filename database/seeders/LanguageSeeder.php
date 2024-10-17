@@ -13,7 +13,7 @@ class LanguageSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('language')->insert(
+        DB::table('language')->insert([
             [
                 'name'=> 'Español'
             ],
@@ -29,6 +29,6 @@ class LanguageSeeder extends Seeder {
             [
                 'name'=> 'Frances'
             ]
-        );
+        ]);
     }
 }

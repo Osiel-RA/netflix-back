@@ -13,7 +13,7 @@ class CategorySeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('category')->insert(
+        DB::table('category')->insert([
             [
                 'name'=> 'Animes Shōnen'
             ],
@@ -38,6 +38,6 @@ class CategorySeeder extends Seeder {
             [
                 'name'=> 'Música'
             ]
-        );
+        ]);
     }
 }

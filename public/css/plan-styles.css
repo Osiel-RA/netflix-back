@@ -1,0 +1,117 @@
+body {
+    background-color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+}
+
+.main-container {
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+}
+
+.navbar-brand img {
+    margin-right: 10px;
+}
+
+.device-icons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.step-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.step-info h7 {
+    color: #000000;
+    display: block;
+}
+
+.step-info h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.checklist {
+    list-style: none;
+    padding-left: 0;
+    text-align: left;
+}
+
+.checklist li {
+    font-size: 1.1em;
+    margin: 10px 0;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.check-icon {
+    margin-right: 10px;
+    width: 20px; /* Adjust the size of the checkmark image */
+}
+
+.btn-next {
+    background-color: #e50914;
+    color: white;
+    font-weight: 400;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+.footer {
+    background-color: #f0f0f0;
+    color: #7e7e7e;
+    padding-top: 25%;
+    padding-bottom: 5%;
+    text-align: left;
+}
+
+.footer .container {
+    max-width: auto;
+}
+
+.footer-title {
+    font-weight: bold;
+}
+
+.footer a {
+    color: #7e7e7e;
+    text-decoration: underline;
+    padding: 10px 0;
+    display: block;
+}
+
+.footer a:hover {
+    color: #7e7e7e; /* Color del enlace al pasar el cursor */
+}
+
+.footer .contact-info {
+    white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
+}
+
+@media (min-width: 768px) {
+    .footer .row {
+        display: flex; /* Usar flexbox para pantallas grandes */
+        flex-wrap: wrap; /* Permitir que las columnas se envuelvan */
+    }
+
+    .footer .col {
+        flex: 0 0 25%; /* Cuatro columnas en pantallas grandes */
+        max-width: 25%; /* Cuatro columnas en pantallas grandes */
+        padding: 0 10px; /* Espacio horizontal entre columnas */
+    }
+}
+
+@media (max-width: 768px) {
+    .footer .col {
+        flex: 0 0 50%; /* Dos columnas en pantallas pequeñas */
+        max-width: 50%; /* Dos columnas en pantallas pequeñas */
+    }
+}
