@@ -19,6 +19,7 @@ return new class extends Migration
             $table->bigInteger('user_id');
             $table->bigInteger('classification_id');
             $table->bigInteger('status_id');
+            $table->string('image_url')->nullable(); // Agrega esta línea para la columna image_url
             $table->date('created_at')->nullable()->default(DB::raw('CURRENT_DATE')); // Usa DB::raw
             $table->timestamp('updated_at')->nullable()->useCurrent();
         });
