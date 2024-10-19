@@ -48,16 +48,9 @@ class LoginController extends Controller
         // Buscar el usuario por su nombre de usuario
         $user = User::where('username', $credentials['username'])->first();
 
-        if (!$user) {
+        if (!$user || !Hash::check($credentials['password'], $user->password)) {
             return back()->withErrors([
-                'username' => 'No se ha encontrado un usuario registrado con este correo electrónico.',
-            ]);
-        }
-
-        // Verificar si la contraseña es correcta
-        if (!Hash::check($credentials['password'], $user->password)) {
-            return back()->withErrors([
-                'password' => 'La contraseña ingresada es incorrecta.',
+                'credentials' => 'El correo electrónico o la contraseña no son correctos.',
             ]);
         }
         // Autenticar al usuario
@@ -75,9 +68,6 @@ class LoginController extends Controller
             return redirect()->route('membership.select-plan')
                 ->with('status', 'Tu suscripción ha expirado. Selecciona un plan para continuar.');
         }
-
-        
-
         // Redirigir al perfil del usuario
         return $this->selectProfile();
     }

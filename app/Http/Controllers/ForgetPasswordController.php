@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Carbon;
@@ -24,7 +22,7 @@ class ForgetPasswordController extends Controller {
 
         // Si el usuario no existe, devolver un error
         if (!$user) {
-            return redirect()->back()->withErrors(['email' => 'Este correo no esta registrado, podrias hacerlo ;D']);
+            return redirect()->back()->withErrors(['email' => 'Este correo no esta registrado']);
         }
         $token= Str::random(64);
 

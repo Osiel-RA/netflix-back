@@ -10,8 +10,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="#">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" width="90" height="30" class="d-inline-block align-top" alt="Icono">
-            nefli pirata
+        <img src="{{ asset('images/logo-netflix.png') }}" width="90" height="55" class="d-inline-block align-top" alt="Icono">
         </a>
     </nav>
    
@@ -36,7 +35,7 @@
                     <div class="alert alert-danger">
                         <ul>
                             @foreach($errors->all() as $error)
-                                <li>{{ $error }} <a href="{{ route('start-register') }}"  class=" font-weight-bold" >Registrate.</p> </li>
+                                <li>{{ $error }} <a href="{{ route('start-register') }}"  class=" font-weight-bold" > <br> Click aqui para registrarte.</p> </li>
                                 
                             @endforeach
                         </ul>
