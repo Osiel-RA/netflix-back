@@ -4,7 +4,8 @@ Contenido: Contiene enlaces de navegación a diferentes secciones de la aplicaci
 -->
 <nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="#">
-        <img src="{{ asset('https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png') }}" alt="Netflix Logo" class="logo">
+      <img src="{{ asset('images/logo-netflix.png') }}" width="90" height="55" alt="Netflix Logo" class="logo">
+    
     </a>
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
@@ -27,7 +28,7 @@ Contenido: Contiene enlaces de navegación a diferentes secciones de la aplicaci
                     Perfil
                 </a>
                 <div class="dropdown-menu" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item" href="#">Administrar perfil</a>
+                    <a class="dropdown-item" href="{{ route('select-profile') }}">Administrar perfil</a>
                     <a class="dropdown-item" href="#">Cuenta</a>
                     <form action="{{ route('logout') }}" method="POST" style="display:inline;">
                         @csrf <!-- Asegúrate de incluir el token CSRF -->

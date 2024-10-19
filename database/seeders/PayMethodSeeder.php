@@ -13,7 +13,7 @@ class PayMethodSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('pay_method')->insert(
+        DB::table('pay_method')->insert([
             [
                 'name'=> 'VISA',
                 'description'=> 'Realización compras en comercios multinacionales.'
@@ -21,7 +21,11 @@ class PayMethodSeeder extends Seeder {
             [
                 'name'=> 'MASTERCARD',
                 'description'=> 'Realización compras en comercios de multiples países.'
+            ],
+            [
+                'name'=> 'Tarjeta de regalo',
+                'description'=> 'Metodo de prepago para ingresar codigo de tarjeta.'
             ]
-        );
+        ]);
     }
 }

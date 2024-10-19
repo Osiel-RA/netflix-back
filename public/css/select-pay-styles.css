@@ -1,0 +1,131 @@
+body {
+    background-color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+}
+
+.main-container {
+    max-width: 500px;
+    margin: 20px auto;
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.step-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.step-header h7 {
+    color: #e50914;
+    display: block;
+    font-weight: 500;
+}
+
+.step-header h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.step-header p {
+    color: #333;
+}
+
+.security-note {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.header-icon {
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.payment-options {
+    margin-top: 10px;
+}
+
+.payment-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    font-size: 1.1em;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+}
+
+.payment-btn:hover {
+    background-color: #fdfdfd;
+}
+
+.btn-icon1 {
+    width: 140px;
+    margin-right: 10px;
+}
+
+.btn-icon2 {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.btn-icon3 {
+    width: 42px;
+    margin-right: 10px;
+}
+
+.arrow {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.footer {
+    background-color: #f0f0f0;
+    color: #7e7e7e;
+    padding-top: 25%;
+    padding-bottom: 5%;
+    text-align: left;
+}
+
+.footer .container {
+    max-width: auto;
+}
+
+.footer a {
+    color: #7e7e7e;
+    text-decoration: underline;
+    padding: 10px 0;
+    display: block;
+}
+
+.footer a:hover {
+    color: #7e7e7e; /* Color del enlace al pasar el cursor */
+}
+
+.footer .contact-info {
+    white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
+}
+
+@media (min-width: 768px) {
+    .footer .row {
+        display: flex; /* Usar flexbox para pantallas grandes */
+        flex-wrap: wrap; /* Permitir que las columnas se envuelvan */
+    }
+
+    .footer .col {
+        flex: 0 0 25%; /* Cuatro columnas en pantallas grandes */
+        max-width: 25%; /* Cuatro columnas en pantallas grandes */
+        padding: 0 10px; /* Espacio horizontal entre columnas */
+    }
+}
+
+@media (max-width: 768px) {
+    .footer .col {
+        flex: 0 0 50%; /* Dos columnas en pantallas pequeñas */
+        max-width: 50%; /* Dos columnas en pantallas pequeñas */
+    }
+}

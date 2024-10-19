@@ -13,7 +13,7 @@ class ClassificationSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        DB::table('classification')->insert(
+        DB::table('classification')->insert([
             [
                 'name'=> 'violencia'
             ],
@@ -32,6 +32,6 @@ class ClassificationSeeder extends Seeder {
             [
                 'name'=> 'drogas'
             ]
-        );
+        ]);
     }
 }
