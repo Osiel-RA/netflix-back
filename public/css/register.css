@@ -3,7 +3,7 @@ body {
 }
 .main-container {
     max-width: 400px;
-    margin: 20px auto; /* Cambia 'margin-top' a 'margin' con 'auto' para centrar horizontalmente */
+    margin: 20px auto; 
     background-color: white;
     padding: 40px;
     border-radius: 8px;
@@ -23,7 +23,6 @@ body {
 }
 /* Sección de imagen de dispositivos */
 .device-icons {
-    background-image: url('your_image_link_here'); /* Reemplaza con el link de tu imagen */
     background-size: cover;
     background-position: center;
     height: 120px;

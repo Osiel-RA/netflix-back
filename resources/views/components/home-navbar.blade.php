@@ -4,7 +4,8 @@ Contenido: Contiene enlaces de navegación a diferentes secciones de la aplicaci
 -->
 <nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="#">
-        <img src="{{ asset('https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png') }}" alt="Netflix Logo" class="logo">
+      <img src="{{ asset('images/logo-netflix.png') }}" width="90" height="55" alt="Netflix Logo" class="logo">
+    
     </a>
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
