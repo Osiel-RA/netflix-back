@@ -31,11 +31,10 @@
         }
 
         h1, p {
-           
             font-weight: 700;
             color: white;
         }
-        p{
+        p {
             margin-bottom: 50px;
         }
 
@@ -49,7 +48,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px; /* Separación entre imagen y campo de texto */
+            gap: 10px;
         }
 
         input {
@@ -58,14 +57,9 @@
             border: 1px solid #555;
             border-radius: 4px;
             font-size: 16px;
-            width: 80%; /* Ajuste del tamaño del input */
+            width: 80%;
             background-color: #292929;
             color: white;
-        }
-
-        .profile-create-form img {
-            max-width: 80px; /* Tamaño reducido de la imagen */
-            height: auto;
         }
 
         .btn {
@@ -82,7 +76,7 @@
         .btn-create-profile {
             background-color: white;
             color: black;
-            transition: background-color 0.3s; font-size: 
+            transition: background-color 0.3s;
         }
 
         .btn-create-profile:hover {
@@ -103,13 +97,13 @@
             text-decoration: none;
             display: inline-block;
             width: 100%;
-            text-align: center; transition: background-color 0.3s; font-size: 
+            text-align: center;
+            transition: background-color 0.3s;
         }
 
         .btn-cancel:hover {
             background-color: #292929;
         }
-
     </style>
 </head>
 <body>
@@ -119,14 +113,12 @@
         <form action="{{ route('store-profile') }}" method="POST" class="profile-create-form">
             @csrf
             <div class="profile-input-container">
-                <img src="{{asset('images/profile-predeterminado.png')}}" alt="Imagen de perfil predeterminado">
                 <input type="text" id="name" name="name" placeholder="Nombre del perfil" required>
             </div>
 
             <button type="submit" class="btn btn-create-profile">Guardar</button>
-            
-            <button type="button" class="btn btn-cancel" onclick="window.location.href='{{ route('select-profile') }}'">Cancelar</button>
 
+            <button type="button" class="btn btn-cancel" onclick="window.location.href='{{ route('select-profile') }}'">Cancelar</button>
         </form>
     </div>
 </body>

@@ -23,7 +23,6 @@ return new class extends Migration
             $table->timestamp('updated_at')->nullable()->useCurrent();
         });
 
-        // Agregar claves foráneas
         Schema::table('profile', function (Blueprint $table) {
             $table->foreign(['classification_id'], 'fk_classification')->references(['id'])->on('classification')->onUpdate('no action')->onDelete('no action');
             $table->foreign(['language_id'], 'fk_language')->references(['id'])->on('language')->onUpdate('no action')->onDelete('no action');

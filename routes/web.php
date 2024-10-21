@@ -76,6 +76,8 @@ Route::middleware(['auth', \App\Http\Middleware\CheckActivePlan::class])->group(
     Route::put('/profiles/{id}', [ProfileController::class, 'update'])->name('profiles.update');
     Route::post('/profiles', [ProfileController::class, 'store'])->name('profiles.store'); 
     Route::get('/profiles/select', [ProfileController::class, 'select'])->name('profiles.select');
+    Route::post('/profiles/{id}/update-image', [ProfileController::class, 'updateImage'])->name('profiles.updateImage');
+    Route::get('/profiles/{id}/select-image', [ProfileController::class, 'selectImage'])->name('select-profile-image');
 });
 
 

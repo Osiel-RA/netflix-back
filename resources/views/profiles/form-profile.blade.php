@@ -1,3 +1,4 @@
+<!-- form-profile.blade.php -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -10,7 +11,6 @@
     .red {
         margin-left: 10px;
     }
-
 </style>
 <body>
     <div class="profile-edit">
@@ -19,26 +19,30 @@
             @csrf
             @method('PUT')
             <table class="profile-table">
-                <!-- Profile Picture and Name -->
-                <tr>
-                    <td class="label-cell" rowspan="5">
-                        <img src="{{ $profile->image_url ?? asset('images/profile-predeterminado.png') }}" alt="Foto de perfil" class="profile-picture">
-                        <!-- !!!!!!!necesita un boton para editar la foto, pero se hara en el sprint 2 --->
-                    </td>
-                    <td class="input-cell">
-                        <input type="text" name="name" id="name" value="{{ $profile->name }}" class="input-field" required>
-                    </td> 
-                </tr>
+               <!-- Profile Picture and Name -->
+<tr>
+    <td class="label-cell" rowspan="5">
+        <a href="{{ route('select-profile-image', $profile->id) }}">
+            <img src="{{ asset($profile->image_url ?: 'images/profile-predeterminado.png') }}" alt="Foto de perfil" class="profile-picture" onclick="window.location.href='{{ route('select-profile-image', $profile->id) }}'">
+        </a>
+    </td>
+    <td class="input-cell">
+        <input type="text" name="name" id="name" value="{{ $profile->name }}" class="input-field" required>
+    </td> 
+</tr>
+
                 <!-- Language Selection -->
                 <tr>
                     <td class="input-cell" colspan="2">
                         <p>Idioma:</p>
-                        <select class="select-field" disabled> 
-                            <option value="español" selected>Español</option>
-                            <option value="english">Inglés</option>
-                        </select>
-                    </td>
+                        <select name="language_id" class="select-field">
+                            @foreach($languages as $language)
+                              <option value="{{ $language->id }}" {{ $profile->language_id == $language->id ? 'selected' : '' }}>{{ $language->name }}</option>
+                            @endforeach
+                       </select>
+                     </td>
                 </tr>
+
                 <!-- Game Alias -->
                 <tr>
                     <td class="input-cell" colspan="2">
@@ -76,9 +80,7 @@
             <!-- Save and Cancel Buttons -->
             <div class="button-section">
                 <button type="submit" class="btn-save"><strong>Guardar</strong></button>
-                <button type="button" class="btn-cancel" onclick="location.href='{{ route('profiles.index') }}'"><strong>Cancelar</strong></button> <!--- ESTE SI SE QUEDA ASI --->
-
-                <!-- El botón de eliminar perfil -->
+                <button type="button" class="btn-cancel" onclick="location.href='{{ route('profiles.index') }}'"><strong>Cancelar</strong></button>
                 <button type="button" class="btn-cancel red" id="deleteProfileBtn"><strong>Eliminar perfil</strong></button>
             </div>
         </form>
@@ -91,11 +93,9 @@
     </form>
 
     <script>
-        // Selecciona el botón de eliminar perfil y el formulario oculto
         const deleteProfileBtn = document.getElementById('deleteProfileBtn');
         const deleteProfileForm = document.getElementById('deleteProfileForm');
 
-        // Al hacer clic en el botón de eliminar perfil, enviamos el formulario
         deleteProfileBtn.addEventListener('click', function() {
             if (confirm('¿Estás seguro de que deseas eliminar el perfil?')) {
                 deleteProfileForm.submit(); // Envía el formulario oculto

@@ -14,7 +14,8 @@
             @foreach($profiles as $profile)
                 <div class="profile">
                     <a href="/home" data-profile-id="{{ $profile->id }}">
-                        <img src="{{ $profile->image_url ?? asset('images/profile-predeterminado.png') }}" alt="Usuario">
+                        <!-- Muestra la imagen del perfil o una predeterminada si no hay imagen -->
+                        <img src="{{ asset($profile->image_url ?? 'images/profile-predeterminado.png') }}" alt="{{ $profile->name }}">
                     </a>
                     <div class="profile-name">{{ $profile->name }}</div>
                 </div>
