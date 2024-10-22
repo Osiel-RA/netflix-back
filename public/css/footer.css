@@ -1,0 +1,52 @@
+.footer-login {
+    background-color: #000;
+    color: #CFCFCF;
+    padding-top: 25%;
+    padding-bottom: 5%;
+    text-align: left;
+ 
+ }
+ 
+ .footer .container {
+    max-width: auto;
+ }
+ 
+ .footer-title {
+    font-weight: bold;
+ }
+ 
+ .footer a {
+    color: #CFCFCF; /* Color de los enlaces */
+    text-decoration: underline; /* Subrayado de los enlaces */
+    padding: 10px 0; /* Espacio arriba y abajo de los enlaces */
+    display: block; /* Asegurar que cada enlace ocupe su propia línea */
+ }
+ 
+ .footer a:hover {
+    color: #CFCFCF; /* Color del enlace al pasar el cursor */
+ }
+ 
+ .footer .contact-info {
+    white-space: nowrap; /* Evitar que el texto se divida en varias líneas */
+ }
+ 
+ @media (min-width: 768px) {
+    .footer .row {
+        display: flex; /* Usar flexbox para pantallas grandes */
+        flex-wrap: wrap; /* Permitir que las columnas se envuelvan */
+    }
+ 
+    .footer .col {
+        flex: 0 0 25%; /* Cuatro columnas en pantallas grandes */
+        max-width: 25%; /* Cuatro columnas en pantallas grandes */
+        padding: 0 10px; /* Espacio horizontal entre columnas */
+    }
+ }
+ 
+ @media (max-width: 768px) {
+    .footer .col {
+        flex: 0 0 50%; /* Dos columnas en pantallas pequeñas */
+        max-width: 50%; /* Dos columnas en pantallas pequeñas */
+    }
+ }
+ 
